@@ -6,7 +6,7 @@ export default function Article () {
 
     return(
         <div className='article'>
-            <h2 className='article-title'>{location.state.title}</h2>
+            <h2 className='container-title'>{location.state.title}</h2>
             <p className='article-body'>{location.state.body}</p>
         </div>
     )

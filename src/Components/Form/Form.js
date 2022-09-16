@@ -1,6 +1,7 @@
 import './Form.css';
-import {useRef, useState} from "react";
+import {useRef} from "react";
 import {useDispatch} from "react-redux";
+import {v4 as uuidv4} from 'uuid';
 
 export default function Form () {
     const dispatch = useDispatch();
@@ -10,7 +11,8 @@ export default function Form () {
 
         const newArticle = {
             title : inputsRefs.current[0].value,
-            body: inputsRefs.current[1].value
+            body: inputsRefs.current[1].value,
+            id: uuidv4(),
         }
 
         dispatch({

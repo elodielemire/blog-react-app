@@ -5,9 +5,16 @@ const INITIAL_STATE = {
 function articleReducer (state= INITIAL_STATE, action) {
     switch (action.type) {
         case "LOADARTICLES": {
-            return{
+            return {
                 ...state,
                 articles: action.payload
+            }
+        }
+        case "DELETEARTICLE": {
+            const newArr = [...state.articles].filter(article => article.id !== action.payload)
+            return {
+                ...state,
+                articles: newArr
             }
         }
         case "ADDARTICLE": {
@@ -32,4 +39,11 @@ export const getArticles = () => dispatch => {
             type: 'LOADARTICLES',
             payload: data
         }))
+}
+
+export const deleteArticle = id => dispatch => {
+    dispatch({
+        type: 'DELETEARTICLE',
+        payload: id
+    })
 }
