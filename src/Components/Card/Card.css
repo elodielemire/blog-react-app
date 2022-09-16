@@ -1,0 +1,31 @@
+.card {
+    padding: 10px;
+    max-width: 300px;
+    min-width: 300px;
+    margin: 10px;
+    cursor: pointer;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    justify-content: space-between;
+    color: black;
+    text-decoration: none;
+}
+
+.card:hover {
+    color: plum;
+    border-color: plum;
+}
+
+.card h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.card a {
+    color: black;
+}
