@@ -1,48 +1,44 @@
 import './Form.css';
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 
 export default function Form () {
-    const [article, setArticle] = useState({
-        title: '',
-        body: ''
-    });
-
     const dispatch = useDispatch();
 
     const handleForm = e => {
         e.preventDefault();
 
+        const newArticle = {
+            title : inputsRefs.current[0].value,
+            body: inputsRefs.current[1].value
+        }
+
         dispatch({
             type: 'ADDARTICLE',
-            payload: article
+            payload: newArticle
         })
 
-        setArticle({
-            title: '',
-            body: ''
-        })
+        e.target.reset();
     };
 
-    const handleTitle = e => {
-        const newTitleState = {...article, title: e.target.value};
-        setArticle(newTitleState);
-    };
+    const inputsRefs = useRef([]);
 
-    const handleBody = e => {
-        const newBodyState = {...article, body: e.target.value};
-        setArticle(newBodyState);
-    };
+    const addRefs = el => {
+        if (el && !inputsRefs.current.includes(el)) {
+            inputsRefs.current.push(el);
+        }
+    }
+
 
     return(
         <>
             <h1 className="form-title">Write an article</h1>
             <form onSubmit={handleForm} className="form-container">
                 <label htmlFor="title">Title</label>
-                <input onChange={handleTitle} value={article.title} type="text" id="title"/>
+                <input ref={addRefs} type="text" id="title"/>
 
                 <label htmlFor="article">Your article</label>
-                <textarea onChange={handleBody} value={article.body} type="text" id="body"/>
+                <textarea ref={addRefs} type="text" id="body"/>
 
                 <button>Send</button>
             </form>
