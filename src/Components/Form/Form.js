@@ -1,7 +1,7 @@
 import './Form.css';
-import {useDispatch} from "react-redux";
 import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
+import {addArticle, editArticle} from "../../redux/articles/articleReducer";
 
 export default function Form (props) {
     const [article, setArticle] = useState({
@@ -10,21 +10,13 @@ export default function Form (props) {
         id: props.id ? props.id : uuidv4()
     });
 
-    const dispatch = useDispatch();
-
     const handleForm = e => {
         e.preventDefault();
 
         if (props.edit) {
-            dispatch({
-                type: 'EDITARTICLE',
-                payload: article
-            })
+            editArticle(article);
         } else {
-            dispatch({
-                type: 'ADDARTICLE',
-                payload: article
-            })
+            addArticle(article)
         }
 
         setArticle({

@@ -60,3 +60,17 @@ export const deleteArticle = id => dispatch => {
         payload: id
     })
 }
+
+export const editArticle = article => dispatch => {
+    dispatch({
+        type: 'EDITARTICLE',
+        payload: article
+    })
+}
+
+export const addArticle = article => dispatch => {
+    dispatch({
+        type: 'ADDARTICLE',
+        payload: article
+    })
+}
