@@ -7,3 +7,13 @@
 .article-body {
     font-size: 18px;
 }
+
+.article-title,
+.article-body {
+    font-family: serif;
+}
+
+.article-title:first-letter,
+.article-body:first-letter {
+    text-transform: uppercase;
+}

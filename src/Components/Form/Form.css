@@ -42,5 +42,7 @@
 }
 
 .form-container button:hover {
-    color: plum;
+    background: -webkit-linear-gradient(0, purple, cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

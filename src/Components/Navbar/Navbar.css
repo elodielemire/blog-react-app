@@ -3,7 +3,6 @@ nav {
     top: 0;
     width: 100%;
     height: 50px;
-    background-color: plum;
     z-index: 1;
 }
 
@@ -16,18 +15,21 @@ nav {
     position: relative;
     margin: 0;
     padding: 0;
-    background-color: plum;
+    border-bottom: 1px solid lightgrey;
+    background-color: white;
 }
 .items {
     margin: 0 15px;
-    color: white;
     cursor: pointer;
-    text-transform: uppercase;
 }
 
 .items a {
     text-decoration: none;
-    color: white;
+    color: black;
+}
+
+.items a:hover {
+    color: dodgerblue;
 }
 
 .btn {
@@ -38,8 +40,9 @@ nav {
     padding: 5px;
     color: #000;
     font-size: 18px;
-    border: none;
+    border: 1px solid lightgrey;
     border-radius: 10px;
+    background-color: white;
 }
 
 @media screen and (max-width: 500px){
@@ -49,17 +52,23 @@ nav {
         height: auto;
     }
     .items:nth-child(1){
-        border-top: 1px solid #fff;
+        border-top: 1px solid lightgrey;
         margin-top: 50px;
     }
     .items {
         height: 50px;
         width: 100%;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid lightgrey;
         line-height: 50px;
         text-align: center;
     }
     .btn {
         display: block;
+    }
+
+    .btn:hover {
+        background: -webkit-linear-gradient(0, purple, cyan);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
