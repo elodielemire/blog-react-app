@@ -27,13 +27,18 @@
     width: 20px;
 }
 
+.card-btn__img--delete {
+    height: 18px;
+    width: 20px;
+}
+
 .card-btn:hover {
     cursor: pointer;
 }
 
 .card-btn:nth-child(3) {
     top: 34px;
-    right: 4px;
+    right: 0;
 }
 
 .card-title {

@@ -43,7 +43,9 @@ export default function Home () {
                                         <img className='card-btn__img' src={require("../../assets/edit.png")}/>
                                     </Link>
                                 </button>
-                                <button className='card-btn' onClick={() => deleteCard(item.id)}>X</button>
+                                <button className='card-btn' onClick={() => deleteCard(item.id)}>
+                                    <img className='card-btn__img--delete' src={require("../../assets/delete.png")}/>
+                                </button>
                             </Card>
                         </>
                     )
