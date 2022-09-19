@@ -1,46 +1,56 @@
 import './Form.css';
-import {useRef} from "react";
 import {useDispatch} from "react-redux";
-import {v4 as uuidv4} from 'uuid';
+import {useState} from "react";
+import {v4 as uuidv4} from "uuid";
 
-export default function Form () {
+export default function Form (props) {
+    const [article, setArticle] = useState({
+        title: props.title,
+        body: props.body,
+        id: props.id ? props.id : uuidv4()
+    });
+
     const dispatch = useDispatch();
 
     const handleForm = e => {
         e.preventDefault();
 
-        const newArticle = {
-            title : inputsRefs.current[0].value,
-            body: inputsRefs.current[1].value,
-            id: uuidv4(),
+        if (props.edit) {
+            dispatch({
+                type: 'EDITARTICLE',
+                payload: article
+            })
+        } else {
+            dispatch({
+                type: 'ADDARTICLE',
+                payload: article
+            })
         }
 
-        dispatch({
-            type: 'ADDARTICLE',
-            payload: newArticle
+        setArticle({
+            title: '',
+            body: ''
         })
-
-        e.target.reset();
     };
 
-    const inputsRefs = useRef([]);
+    const handleTitle = e => {
+        const newTitleState = {...article, title: e.target.value};
+        setArticle(newTitleState);
+    };
 
-    const addRefs = el => {
-        if (el && !inputsRefs.current.includes(el)) {
-            inputsRefs.current.push(el);
-        }
-    }
-
+    const handleBody = e => {
+        const newBodyState = {...article, body: e.target.value};
+        setArticle(newBodyState);
+    };
 
     return(
         <>
-            <h1 className="form-title">Write an article</h1>
             <form onSubmit={handleForm} className="form-container">
                 <label htmlFor="title">Title</label>
-                <input ref={addRefs} type="text" id="title"/>
+                <input onChange={handleTitle} value={article.title} type="text" id="title"/>
 
                 <label htmlFor="article">Your article</label>
-                <textarea ref={addRefs} type="text" id="body"/>
+                <textarea onChange={handleBody} value={article.body} type="text" id="body"/>
 
                 <button>Send</button>
             </form>

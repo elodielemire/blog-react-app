@@ -2,7 +2,7 @@ import './Home.css';
 import Card from "../../Components/Card/Card";
 import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {deleteArticle, getArticles} from "../../redux/articles/articleReducer";
+import {deleteArticle, getArticles, editArticle} from "../../redux/articles/articleReducer";
 import {v4 as uuidv4} from 'uuid';
 import {Link} from "react-router-dom";
 
@@ -37,6 +37,12 @@ export default function Home () {
                                        state={{title: item.title, body: item.body}}>
                                     <h2 className='card-title'>{item.title}</h2>
                                 </Link>
+                                <button className='card-btn'>
+                                    <Link  to={{pathname: `edit/${formattedTitle}`}}
+                                           state={{title: item.title, body: item.body, id: item.id}}>
+                                        <img className='card-btn__img' src={require("../../assets/edit.png")}/>
+                                    </Link>
+                                </button>
                                 <button className='card-btn' onClick={() => deleteCard(item.id)}>X</button>
                             </Card>
                         </>

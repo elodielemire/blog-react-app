@@ -15,17 +15,25 @@
 }
 
 .card-btn {
-    border: 1px solid lightgrey;
-    border-radius: 10px;
+    border: none;
     background-color: transparent;
-    width: 25px;
+    width: auto;
     position: absolute;
-    right: 10px;
+    right: 0;
+    top: 7px;
+}
+
+.card-btn__img {
+    width: 20px;
 }
 
 .card-btn:hover {
-    color: plum;
     cursor: pointer;
+}
+
+.card-btn:nth-child(3) {
+    top: 34px;
+    right: 4px;
 }
 
 .card-title {

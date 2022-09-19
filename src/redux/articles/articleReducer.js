@@ -17,6 +17,19 @@ function articleReducer (state= INITIAL_STATE, action) {
                 articles: newArr
             }
         }
+        case "EDITARTICLE": {
+            const newArr = [...state.articles];
+            newArr.map(item => {
+                if (item.id === action.payload.id) {
+                    item.title = action.payload.title;
+                    item.body = action.payload.body;
+                }
+            });
+            return {
+                ...state,
+                articles: newArr
+            }
+        }
         case "ADDARTICLE": {
             const newArr = [...state.articles];
             newArr.unshift(action.payload);
