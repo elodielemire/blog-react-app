@@ -2,6 +2,8 @@ import './Form.css';
 import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {addArticle, editArticle} from "../../redux/articles/articleReducer";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 export default function Form (props) {
     const [article, setArticle] = useState({
@@ -9,20 +11,24 @@ export default function Form (props) {
         body: props.body,
         id: props.id ? props.id : uuidv4()
     });
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
 
     const handleForm = e => {
         e.preventDefault();
 
         if (props.edit) {
-            editArticle(article);
+            dispatch(editArticle(article));
         } else {
-            addArticle(article)
+            dispatch(addArticle(article));
         }
 
         setArticle({
             title: '',
             body: ''
-        })
+        });
+
+        navigate('/');
     };
 
     const handleTitle = e => {

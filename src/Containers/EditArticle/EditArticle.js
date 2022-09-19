@@ -6,7 +6,7 @@ export default function EditArticle () {
 
     return(
         <>
-            <h1 className="form-title">Edit an article</h1>
+            <h1 className="container-title">Edit an article</h1>
             <Form
                 title={location.state.title}
                 body={location.state.body}

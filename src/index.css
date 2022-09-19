@@ -13,4 +13,7 @@ a {
   padding: 20px 0;
   text-align: center;
   margin: 0;
+  background: -webkit-linear-gradient(0, purple, cyan);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
